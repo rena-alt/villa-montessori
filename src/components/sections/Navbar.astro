@@ -7,7 +7,8 @@ const navItems = [
   { href: '/', label: 'Inicio' },
   { href: '/filosofia', label: 'Filosofía' },
   { href: '/ambiente', label: 'Casa de los Niños' },
-  { href: '/rutina-diaria', label: 'Un dia en Villa Montessori' },
+  { href: '/rutina-diaria', label: 'Un día en Villa Montessori' },
+  { href: '/galeria', label: 'Momentos' },
 ];
 ---
 
@@ -35,7 +36,6 @@ const navItems = [
       </div>
     </a>
 
-    {/* Navegación Desktop */}
     <nav class="desktop-nav">
       {navItems.map((item) => (
         <a href={item.href} class="nav-link">
@@ -44,9 +44,8 @@ const navItems = [
       ))}
     </nav>
 
-    {/* CTA Desktop */}
     <div class="desktop-cta">
-      <a href="#admisiones" class="btn btn-primary btn-round">
+      <a href="/contacto" class="btn btn-primary btn-round">
         Agendar Visita
       </a>
     </div>

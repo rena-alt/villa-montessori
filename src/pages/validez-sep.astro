@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Datos oficiales de Casa de los Niños
+const registroSEP = {
+  nivel: "Casa de los Niños",
+  subtitulo: "Equivalente al nivel Preescolar Oficial",
+  edades: "3 a 6 años",
+  acuerdo: "Acuerdo No.  PRER 09110051CD", 
+  CCT: "09PJN3697T", 
+  descripcion: "Nuestro ambiente está diseñado científicamente bajo los estándares de la Dra. Maria Montessori y cuenta con la validación de la Secretaría de Educación Pública. El programa cubre y enriquece las bases del desarrollo del lenguaje, el pensamiento lógico-matemático, el refinamiento sensorial y la vida comunitaria indispensables para esta etapa de desarrollo."
+};
+---
+
+<Layout 
+  title="Validez Oficial SEP | Villa Montessori"
+  description="Consulta el registro oficial, Clave de Centro de Trabajo (CCT) y acuerdo de incorporación ante la SEP del nivel Casa de los Niños en Villa Montessori CDMX."
+>
+  <section class="relative pt-32 pb-20 px-6 bg-[var(--color-brand-green)] text-white text-center">
+    <div class="max-w-3xl mx-auto space-y-4">
+      <span class="inline-block uppercase tracking-widest text-xs font-bold bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-[var(--color-brand-orange)]">
+        Certeza Jurídica e Institucional
+      </span>
+      <h1 class="font-bold tracking-tight text-white" style="font-family: var(--font-headers); font-size: clamp(2.5rem, 5vw, 3.8rem);">
+        Incorporación y <br/><span class="text-[var(--color-bg-cream)]">Registro Oficial SEP</span>
+      </h1>
+      <p class="max-w-xl mx-auto opacity-90 font-light leading-relaxed text-base">
+        Garantizamos la validez oficial de cada ciclo escolar. Nuestra propuesta pedagógica Montessori convive en perfecta armonía con los lineamientos y normativas de las autoridades educativas.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full h-12 bg-[var(--color-bg-cream)]" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
+  </section>
+
+  <section class="py-24 px-6 bg-[var(--color-bg-cream)]">
+    <div class="max-w-3xl mx-auto space-y-12">
+      <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition-all duration-400">
+        <div class="space-y-6">
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-brand-orange)]">Nivel Educativo • {registroSEP.edades}</span>
+              <h2 class="text-3xl font-bold text-[var(--color-slate-dark)] mt-1" style="font-family: var(--font-headers);">
+                {registroSEP.nivel}
+              </h2>
+              <p class="text-sm text-[var(--color-brand-green)] font-medium mt-0.5">{registroSEP.subtitulo}</p>
+            </div>
+            <div class="p-3 rounded-2xl bg-[var(--color-brand-green)]/5 text-[var(--color-brand-green)] font-bold text-xs tracking-wider border border-[var(--color-brand-green)]/10 flex-shrink-0">
+              SEP
+            </div>
+          </div>
+          
+          <p class="text-slate-600 font-light text-base leading-relaxed">
+            {registroSEP.descripcion}
+          </p>
+          <div class="pt-6 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="space-y-1">
+              <span class="text-xs text-slate-400 font-medium block">Clave de Centro de Trabajo (CCT)</span>
+              <strong class="text-[var(--color-slate-dark)] tracking-wider font-mono bg-slate-50 px-2.5 py-1 rounded-md text-sm inline-block">
+                {registroSEP.CCT}
+              </strong>
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs text-slate-400 font-medium block">Número de Acuerdo</span>
+              <strong class="text-[var(--color-slate-dark)] text-sm block pt-1">{registroSEP.acuerdo}</strong>
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs text-slate-400 font-medium block">Fecha de Incorporación</span>
+              <span class="text-slate-600 text-sm block pt-1">{registroSEP.fecha}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-8 border-t border-slate-100 text-xs text-slate-400 italic">
+          Estudios autorizados y validados ante la Autoridad Educativa Federal en la Ciudad de México.
+        </div>
+      </div>
+
+      <div class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 shadow-sm border border-slate-100 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div class="md:col-span-8 space-y-2 text-left">
+          <h3 class="text-xl font-bold text-[var(--color-slate-dark)]">Verificación del estatus escolar</h3>
+          <p class="text-slate-600 font-light text-sm leading-relaxed">
+            Como muestra de absoluta transparencia, puedes validar de forma directa la autenticidad de nuestra clave escolar ingresando la CCT en el portal oficial de la SEP de la Ciudad de México.
+          </p>
+        </div>
+        
+        <div class="md:col-span-4 w-full">
+          <a 
+            href="https://www.siged.sep.gob.mx/SIGED/escuelas.html" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="block text-center bg-[var(--color-brand-orange)] hover:bg-[var(--color-brand-orange)]/90 text-white font-medium text-sm px-6 py-4 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 w-full"
+          >
+            Validar en SIGED →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
