@@ -1,0 +1,295 @@
+---
+// src/components/sections/AreasSection.astro
+import AreaCard from '../blocks/AreaCard.astro';
+
+import vidaPracticaImg from '../../assets/images/vida-practica.jpg';
+import sensorialImg from '../../assets/images/sensorial.jpg';
+import lenguajeImg from '../../assets/images/lenguaje.jpg';
+import matematicasImg from '../../assets/images/matematicas.jpg';
+import cuidadoAmbienteImg from '../../assets/images/cuidado-del-ambiente.jpg';
+import cuidadoPersonaImg from '../../assets/images/cuidado-personal.jpg';
+import areasCulturalesImg from '../../assets/images/cultural.jpg';
+import educacionPazImg from '../../assets/images/educacion-paz.jpg';
+
+const areas = [
+  {
+    title: "Vida Práctica",
+    description: "Las actividades de Vida Práctica son el puente entre el hogar y el aula. A través de ejercicios cotidianos y reales, los niños desarrollan coordinación, concentración, independencia y un profundo sentido de orden.",
+    imagePath: vidaPracticaImg,
+    imageAlt: "Niña lavando superficie con cepillo de madera",
+    learningFocus: ["Autonomía y cuidado personal", "Motricidad fina", "Independencia"]
+  },
+  {
+    title: "Sensorial",
+    description: "En Montessori decimos que el niño es un 'explorador sensorial'. Los materiales de esta área están diseñados científicamente para aislar una sola cualidad (como tamaño, forma, color, textura o sonido), ayudando al niño a clasificar, ordenar y comprender los estímulos de su entorno.",
+    imagePath: sensorialImg,
+    imageAlt: "Niña trabajando con los cubos rosas",
+    learningFocus: ["Desarrollo cognitivo: Clasificación visual, táctil, auditiva y barofórica (peso).", "Preparación matemática: Introducción abstracta a dimensiones, volúmenes y series.", "Educación de los sentidos: Afinación de la percepción y el juicio crítico."]
+  },
+  {
+    title: "Lenguaje",
+    description: "El lenguaje en nuestro ambiente se absorbe de forma natural y rica. Desde la conversación y el vocabulario preciso hasta la lectoescritura, acompañamos al niño en su proceso de plasmar sus pensamientos y comprender los de los demás.",
+    imagePath: lenguajeImg,
+    imageAlt: "Niño trabajando con alfabeto en cursiva",
+    learningFocus: ["Enfoque fonético: Reconocimiento de los sonidos antes de las formas.", "Exploración táctil: Letras de lija para asociar el trazo con la memoria muscular.", "Construcción de palabras: Uso del alfabeto móvil para 'escribir' antes de tener la motricidad fina para sostener un lápiz"]
+  },
+  {
+    title: "Matemáticas",
+    description: "Las matemáticas en Villa Montessori no se memorizan de forma abstracta; se tocan y se sienten. El niño interioriza conceptos matemáticos complejos a través de la manipulación de materiales concretos que hacen visible la geometría y la aritmética.",
+    imagePath: matematicasImg,
+    imageAlt: "Niñas utilizando cadena larga",
+    learningFocus: ["Mente matemática: Desarrollo natural del orden, la exactitud y la lógica", "Introducción al sistema decimal", "Materiales concretos: Conteo real con perlas, barras y tableros de madera", "Grandes operaciones: Comprensión del sistema decimal (unidades, decenas, centenas y millares) de forma sensorial y divertida"]
+  },
+  {
+    title: "Cuidado Personal",
+    description: "En Villa Montessori, fomentamos la autonomía y el respeto por uno mismo. Nuestros niños aprenden a cuidar su cuerpo y su higiene a través de actividades como:",
+    imagePath: cuidadoPersonaImg,
+    imageAlt: "Niña cepillando su cabello frente al espejo",
+    learningFocus: ["Lavado de manos y cara", "Vestirse y desvestirse","Cuidado del cabello y uñas", "Alimentación saludable"]
+  },
+  {
+    title: "Cuidado del Ambiente",
+    description: "En Villa Montessori, creemos que cuidar nuestro entorno es esencial para nuestro bienestar. Nuestros niños aprenden a respetar y proteger el medio ambiente a través de actividades como:",
+    imagePath: cuidadoAmbienteImg,
+    imageAlt: "Niño sembrando frutas, proyecto huerto",
+    learningFocus: ["Cuidado de plantas y animales", "Reciclaje y compostaje", "Uso responsable del agua y la energía"]
+  },
+  {
+    title: "Educación para la Paz",
+    description: "En Villa Montessori, cultivamos la paz y la armonía en nuestra comunidad. Nuestros niños aprenden a resolver conflictos de manera pacífica y a respetar las diferencias a través de actividades como:",
+    imagePath: educacionPazImg,
+    imageAlt: "Niños trabajando juntos en armonia",
+    learningFocus: ["Comunicación asertiva y escucha activa", "Mediación de conflictos", "Valoración de la diversidad cultural y social", "Práctica de la empatía y la compasión"]
+  },
+  {
+    title: "Áreas Culturales",
+    description: "En Villa Montessori, valoramos la riqueza de la cultura y las artes. Nuestros niños exploran diferentes expresiones culturales a través de actividades como:",
+    imagePath: areasCulturalesImg,
+    imageAlt: "Niños trabajando juntos en armonia",
+    learningFocus: ["Geografía e historia", "Música y danza", "Artes plásticas y visuales", "Literatura y narración de cuentos"]
+  },
+];
+
+const generateSlug = (text: string) => {
+  return text
+    .toLowerCase()
+    .normalize("NFD") 
+    .replace(/[\u0300-\u036f]/g, "") 
+    .replace(/\s+/g, '-'); 
+};
+---
+
+<section id="rutina" class="areas-section overflow-hidden">
+  <div class="container mx-auto px-4">
+    
+    <div class="section-header reveal-fade">
+      <span class="section-badge">El Ritmo del Día</span>
+      <h2>Menos horarios rígidos, más aprendizaje real</h2>
+      <p class="section-subtitle">
+        La rutina diaria en nuestro ambiente preparado no se divide por materias obligatorias ni timbres incómodos, sino por momentos de desarrollo físico, intelectual y social. Todos los días, tu hijo experimenta:
+      </p>
+      
+      <ul class="manifesto-list">
+        <li class="manifesto-item">
+          <div class="manifesto-indicator"></div>
+          <div>
+            <strong>Autonomía desde la llegada:</strong> 
+            Rituales matutinos donde el niño gestiona su propio espacio, se quita el abrigo y cuida sus pertenencias.
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <div class="manifesto-indicator"></div>
+          <div>
+            <strong>El Ciclo de Trabajo Libre:</strong> 
+            Horas ininterrumpidas donde transita y profundiza de manera autónoma entre los desafíos de las áreas fundamentales según su interés interno.
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <div class="manifesto-indicator"></div>
+          <div>
+            <strong>Gracia y Cortesía:</strong> 
+            Momentos colectivos sobre la línea donde practicamos el cuidado de los demás, el diálogo, la música y la vida en comunidad.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="areas-grid reveal-stagger">
+      {areas.map((area) => {
+        const cardId = generateSlug(area.title); 
+        return (
+          <div id={cardId} class="area-card-wrapper">
+            <AreaCard 
+              title={area.title}
+              description={area.description}
+              imagePath={area.imagePath}
+              imageAlt={area.imageAlt}
+              learningFocus={area.learningFocus}
+            />
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -12% 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const initObserver = () => {
+      document.querySelectorAll('.reveal-fade, .reveal-stagger').forEach(el => observer.observe(el));
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initObserver);
+    } else {
+      initObserver();
+    }
+    document.addEventListener('astro:page-load', initObserver);
+  })();
+</script>
+
+<style>
+  .areas-section {
+    padding: 1em 0; 
+    background-color: var(--color-bg-cream); 
+  }
+
+  @media (min-width: 768px) {
+    .areas-section {
+      padding: 2em 0; 
+    }
+  }
+
+  .area-card-wrapper {
+    scroll-margin-top: 6rem; 
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-16);
+  }
+
+  .section-badge {
+    display: block;
+    font-family: var(--font-headers);
+    font-size: var(--font-size-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.12em;
+    color: var(--color-brand-green); 
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .section-header h2 {
+    color: var(--color-slate-dark);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-subtitle {
+    color: var(--color-slate-dark);
+    opacity: 0.85;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-8);
+  }
+
+  .manifesto-list {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    background: rgba(255, 255, 255, 0.4);
+    padding: var(--space-6) var(--space-6) var(--space-6) var(--space-8);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(13, 71, 49, 0.05);
+  }
+
+  .manifesto-item {
+    display: flex;
+    gap: var(--space-3);
+    align-items: start;
+    font-size: var(--font-size-sm);
+    color: var(--color-slate-dark);
+    line-height: 1.6;
+    transition: transform 0.3s ease;
+  }
+
+  .manifesto-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-brand-orange);
+    margin-top: 8px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .manifesto-item:hover {
+    transform: translateX(4px);
+  }
+  .manifesto-item:hover .manifesto-indicator {
+    transform: scale(1.4);
+    background-color: var(--color-brand-green);
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: var(--space-6);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .areas-grid {
+      grid-template-columns: repeat(2, 1fr); 
+      gap: var(--space-8);
+    }
+  }
+
+  .reveal-fade {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .reveal-stagger .area-card-wrapper {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .reveal-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger.is-visible .area-card-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger.is-visible .area-card-wrapper:nth-child(1) { transition-delay: 0.1s; }
+  .reveal-stagger.is-visible .area-card-wrapper:nth-child(2) { transition-delay: 0.25s; }
+  .reveal-stagger.is-visible .area-card-wrapper:nth-child(3) { transition-delay: 0.4s; }
+  .reveal-stagger.is-visible .area-card-wrapper:nth-child(4) { transition-delay: 0.55s; }
+</style>

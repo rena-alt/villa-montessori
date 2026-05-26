@@ -1,0 +1,112 @@
+---
+// src/components/shared/WhatsAppWidget.astro
+
+interface Props {
+  phoneNumber?: string;
+  defaultMessage?: string;
+}
+
+const {
+  phoneNumber = "525591618247", 
+  defaultMessage = "Hola, vi su sitio web y me gustaría recibir informes sobre la inscripción a Casa de los Niños (Preescolar).",
+} = Astro.props;
+
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+---
+
+<a
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="whatsapp-widget group"
+  aria-label="Contactar a Villa Montessori por WhatsApp"
+>
+  <span class="whatsapp-tooltip">
+    ¿Dudas? Escríbenos por WhatsApp
+  </span>
+
+  <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.498 4.86 1.499 5.462 0 9.904-4.43 9.907-9.895.002-2.648-1.02-5.137-2.878-6.997-1.859-1.86-4.35-2.883-7.001-2.884-5.461 0-9.903 4.43-9.906 9.896-.001 1.708.471 3.378 1.36 4.854l-.995 3.635 3.71-.973zm13.114-4.837c-.314-.157-1.857-.915-2.142-1.018-.284-.104-.491-.157-.698.157-.207.314-.799 1.018-.98 1.225-.18.207-.36.233-.674.076-.314-.157-1.326-.489-2.527-1.561-.933-.833-1.563-1.862-1.746-2.176-.183-.314-.02-.484.137-.64.142-.14.314-.366.471-.549.157-.183.21-.314.314-.523.104-.209.052-.392-.026-.549-.078-.157-.698-1.683-.957-2.307-.252-.607-.51-.524-.698-.534-.18-.01-.387-.012-.594-.012s-.543.078-.827.392c-.284.314-1.086 1.062-1.086 2.589 0 1.526 1.111 3.005 1.266 3.214.155.209 2.186 3.339 5.298 4.681.741.32 1.319.51 1.77.653.745.237 1.423.204 1.959.124.597-.089 1.857-.759 2.116-1.455.258-.697.258-1.295.18-1.416-.077-.121-.284-.196-.598-.354z"/>
+  </svg>
+</a>
+
+<style>
+    .whatsapp-widget {
+      position: fixed !important;
+      bottom: var(--space-12) !important;
+      right: var(--space-6) !important;
+      z-index: 9999 !important; 
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      width: 3.5rem; 
+      height: 3.5rem;
+      border-radius: var(--radius-full);
+      
+      background-color: var(--color-brand-green);
+      box-shadow: var(--shadow-lg);
+      
+      transition: transform var(--transition-fast), background-color var(--transition-fast);
+      cursor: pointer;
+      text-decoration: none;
+      
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  
+    .whatsapp-widget:hover {
+      background-color: var(--color-brand-green-hover);
+      transform: scale(1.1);
+    }
+  
+    .whatsapp-widget:active {
+      transform: scale(0.95);
+    }
+  
+    .whatsapp-widget:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px var(--color-brand-green-light);
+    }
+  
+    .whatsapp-icon {
+      width: 1.9rem; 
+      height: 1.9rem;
+      fill: var(--color-white); 
+    }
+  
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 4.5rem; 
+      
+      background-color: var(--color-white);
+      color: var(--color-slate-dark);
+      font-family: var(--font-headers);
+      font-size: var(--font-size-xs);
+      font-weight: var(--weight-medium);
+      
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(156, 163, 175, 0.12);
+      box-shadow: var(--shadow-sm);
+      
+      white-space: nowrap;
+      pointer-events: none;
+      
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity var(--transition-normal), transform var(--transition-normal);
+    }
+  
+    .whatsapp-widget:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  
+    @media (max-width: 480px) {
+      .whatsapp-tooltip {
+        display: none;
+      }
+    }
+  </style>

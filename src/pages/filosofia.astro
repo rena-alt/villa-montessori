@@ -1,0 +1,16 @@
+---
+// src/pages/index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import MontessoriMethod from '../components/sections/MontessoriMethod.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+---
+
+<MainLayout 
+  title="El Método Montessori | Filosofía de Villa Montessori" 
+  description="Conoce cómo nuestros ambientes preparados y la guía respetuosa transforman el juego en aprendizaje autónomo. Descubre la educación Casa de los Niños."
+>
+<TrustBar />
+  <MontessoriMethod />
+  <ContactSection />
+</MainLayout>

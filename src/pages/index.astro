@@ -1,0 +1,50 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import HeroBackground from '../components/sections/HeroBackground.astro';
+import IntroLanding from '../components/sections/IntroLanding.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+
+import heroImage from '../assets/images/ambiente-preparado.png';
+
+---
+
+<MainLayout title="Villa Montessori | Casa de los Niños (Preescolar) en GAM" 
+description="Preescolar Montessori incorporado a la SEP en la GAM. Ambientes preparados para niños de 3 a 6 años. ¡Agenda tu visita hoy!"> 
+  <HeroBackground 
+  title="Preparando al niño para la vida"
+  subtitle="Un espacio cálido y diseñado científicamente donde la curiosidad guía el aprendizaje y cada paso es celebrado con respeto."
+  imageSrc={heroImage}
+  imageAlt="Ambiente preparado de Casa de los Niños con mobiliario a escala"
+  ctaText="Agenda un Tour"
+  ctaHref="#contacto"
+/>
+<TrustBar />
+<IntroLanding />
+
+ <ContactSection />
+</MainLayout>
+
+  <style is:inline>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Caveat:wght@500;700&display=swap');
+    
+    .font-handwritten { 
+      font-family: 'Caveat', cursive; 
+    }
+  </style>
+
+ 
+
+  
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+  body { 
+    font-family: 'DM Sans', sans-serif; 
+    background-color: #fdfaf5;
+    color: #1c1917;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>

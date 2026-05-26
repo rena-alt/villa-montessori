@@ -1,0 +1,42 @@
+---
+// src/pages/principal.asp.astro
+
+const id = Astro.url.searchParams.get('id');
+
+let destination = '/';
+
+switch (id) {
+  case '1':
+    destination = '/nosotros'; // Nosotros / El Método
+    break;
+  case '2':
+    destination = '/casa-de-los-ninos'; // Oferta Educativa / Ambiente Preparado
+    break;
+  case '3':
+    destination = '/filosofia'; // Sistema / Método
+    break;
+  case '6':
+    destination = '/un-dia-en-villa-montessori'; // Circulares o sección comunitaria
+    break;
+  case '20':
+    destination = '/galeria'; // Galería
+    break;
+  case '14':
+    destination = '/#admisiones'; // Ubicación (baja directo al mapa/contacto)
+    break;
+  case '5':
+    destination = '/#admisiones'; // Contacto (baja al formulario de Netlify)
+    break;
+  case '17':
+    destination = '/un-dia-en-villa-montessori'; // Calendario Escolar o Rutinas
+    break;
+  case '18':
+    destination = '/aviso-de-privacidad'; // Aviso de Privacidad
+    break;
+  default:
+    destination = '/'; // Si no coincide ninguno, al Home seguro
+    break;
+}
+
+return Astro.redirect(destination, 301);
+---

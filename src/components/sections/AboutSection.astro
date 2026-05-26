@@ -1,0 +1,258 @@
+---
+// src/components/sections/AboutSection.astro
+
+const objetivos = [
+  "Que construya su propia personalidad con una mente lógica y ordenada.",
+  "Que adquiera los conocimientos y cultura de la humanidad en un clima de amor y aceptación.",
+  "Que conquiste la libertad responsable, la autonomía y la independencia.",
+  "Que su formación lo haga un ser integral y armónico con el mundo que lo rodea.",
+  "Que su trabajo sea por el gusto y satisfacción del hacer y no por obligación.",
+  "Que sea el ciudadano universal que vive en Paz consigo mismo y los demás."
+];
+---
+
+<section id="nosotros" class="about-section">
+  <div class="container mx-auto px-4 md:px-6">
+    
+    <div class="mission-block reveal-fade">
+      <div class="mission-meta">
+        <span class="about-badge">Nosotros</span>
+        <h2>Nuestra Misión</h2>
+      </div>
+      <div class="mission-content">
+        <p class="highlight-text">
+          Pensamos en el niño desde el momento de su concepción y en el <span class="serif-italic">"Secreto de la infancia"</span>.
+        </p>
+        <p>
+          Nuestro niño es el <strong>"adulto del mañana"</strong> y la tierra fértil para su desarrollo somos nosotros: <span class="quote-inline">"un ambiente preparado"</span>.
+        </p>
+        <p>
+          Confiamos en el niño y sus potencialidades. Propiciamos su desarrollo a través de sus propias experiencias y bajo el más profundo respeto a su persona y al individuo único e irrepetible que es.
+        </p>
+      </div>
+    </div>
+
+    <div class="objectives-block">
+      <div class="objectives-header text-center reveal-fade">
+        <h2>Objetivos Educativos</h2>
+        <p class="section-subtitle">Proponemos y promovemos para el desarrollo integral del niño:</p>
+      </div>
+
+      <div class="objectives-grid">
+        {objetivos.map((objetivo, index) => (
+          <div class="objective-card reveal-stagger">
+            <div class="card-marker">
+              <span class="marker-dot"></span>
+              <span class="marker-number">0{index + 1}</span>
+            </div>
+            <p class="objective-text">{objetivo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Observer nativo para activar las entradas fluidas al hacer scroll
+  (() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -8% 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.reveal-fade, .reveal-stagger').forEach(el => observer.observe(el));
+    });
+  })();
+</script>
+
+<style>
+  .about-section {
+    padding: 5em 0;
+    background-color: var(--color-white, #ffffff);
+    color: var(--color-slate-dark, #1e293b);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .about-badge {
+    font-family: var(--font-headers), sans-serif;
+    font-size: var(--font-size-xs, 12px);
+    font-weight: 700;
+    color: var(--color-brand-green, #0d4731);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.5em;
+  }
+
+  /* --- ESTILOS DE LA MISIÓN --- */
+  .mission-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 6em;
+    background-color: var(--color-bg-cream, #fdfbf7); /* Tu crema suave institucional */
+    padding: 2.5rem;
+    border-radius: var(--radius-xl, 24px);
+    border: 1px solid rgba(13, 71, 49, 0.03);
+  }
+
+  @media (min-width: 768px) {
+    .mission-block {
+      grid-template-columns: 1fr 2fr;
+      padding: 4rem;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+
+  .mission-meta h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-slate-dark, #1e293b);
+  }
+
+  .mission-content p {
+    font-size: var(--font-size-sm, 15px);
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+    opacity: 0.85;
+  }
+
+  .mission-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .highlight-text {
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+    color: var(--color-brand-green, #0d4731);
+    opacity: 1 !important;
+    font-weight: 500;
+  }
+
+  .serif-italic {
+    font-family: var(--font-headers), serif;
+    font-style: italic;
+  }
+
+  .quote-inline {
+    font-style: italic;
+    opacity: 0.9;
+  }
+
+  /* --- ESTILOS DE OBJETIVOS --- */
+  .objectives-header {
+    max-width: 600px;
+    margin: 0 auto 3.5em auto;
+  }
+
+  .objectives-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+  }
+
+  .section-subtitle {
+    font-size: var(--font-size-sm, 15px);
+    opacity: 0.7;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .objectives-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .objectives-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  /* Tarjeta de cada objetivo individual */
+  .objective-card {
+    background-color: var(--color-white, #ffffff);
+    padding: 24px;
+    border-radius: var(--radius-lg, 16px);
+    border: 1px solid rgba(13, 71, 49, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+  }
+
+  .objective-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(13, 71, 49, 0.15);
+  }
+
+  .card-marker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .marker-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-brand-green, #0d4731);
+    border-radius: 50%;
+    display: block;
+  }
+
+  .marker-number {
+    font-size: 11px;
+    font-family: sans-serif;
+    font-weight: 600;
+    opacity: 0.3;
+    letter-spacing: 0.05em;
+  }
+
+  .objective-text {
+    font-size: var(--font-size-sm, 14px);
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  .reveal-fade, .reveal-stagger {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .reveal-fade.is-visible, .reveal-stagger.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

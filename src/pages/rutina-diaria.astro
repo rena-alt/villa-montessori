@@ -1,0 +1,17 @@
+---
+// src/pages/rutina-diaria.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import MontessoriDaily from '../components/sections/MontessoriDaily.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+---
+
+<MainLayout 
+  title="Un Día en Villa Montessori | Rutina y Horarios" 
+  description="¿Cómo es la rutina diaria en nuestro colegio? Conoce el ciclo de trabajo libre, los momentos de comunidad y el ritmo de un día en Villa Montessori."
+>
+<TrustBar />
+  <MontessoriDaily />
+
+  <ContactSection />
+</MainLayout>

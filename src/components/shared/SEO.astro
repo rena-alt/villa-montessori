@@ -1,0 +1,77 @@
+---
+// src/components/shared/SEO.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Villa Montessori | Casa de los Niños en Lindavista / GAM",
+  description = "Preescolar Montessori en la GAM (zona Lindavista/Tepeyac Insurgentes). Ambientes preparados y guías certificadas para el desarrollo natural de niños de 3 a 6 años. Incorporado a la SEP.",
+  image = "/images/og-casa-de-los-ninos.jpg", // Imagen optimizada para compartir
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+// JSON-LD Local Business / School Schema para Google
+const schoolSchema = {
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": "Villa Montessori - Casa de los Niños",
+  "description": description,
+  "image": new URL(image, Astro.url.origin).href,
+  "url": Astro.url.origin,
+  "telephone": "+525591618247", 
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Union 272", 
+    "addressLocality": "Gustavo A. Madero",
+    "addressRegion": "Ciudad de México",
+    "addressCountry": "MX",
+    "postalCode": "07020" 
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "19.4819.19.48360339759751", 
+    "longitude": "-99.1215434755072"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "08:00",
+    "closes": "14:00"
+  },
+  "knowsAbout": ["Método Montessori", "Educación Preescolar", "Casa de los Niños"],
+  "award": "Acreditado por el Centro de Estudios Montessori"
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<link rel="canonical" href={canonicalURL} />
+
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url.origin)} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url.origin)} />
+
+<meta name="robots" content="index, follow" />
+
+<script type="application/ld+json" set:html={JSON.stringify(schoolSchema)} />

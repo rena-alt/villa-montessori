@@ -1,0 +1,18 @@
+---
+// src/pages/index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+import MontessoriEnvironment from '../components/sections/MontessoriEnvironment.astro';
+---
+
+<MainLayout 
+  title="Casa de los Niños | El Ambiente Preparado Montessori" 
+  description="Descubre nuestro ambiente preparado para niños de 3 a 6 años. Espacios con mobiliario a su escala y materiales científicos para su autonomía."
+>
+<TrustBar />
+
+  <MontessoriEnvironment />
+
+<ContactSection />
+</MainLayout>

@@ -1,0 +1,48 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+  [key: string]: any; // Para capturar atributos extra como target="_blank", id, etc.
+}
+
+const { 
+  href, 
+  variant = 'primary', 
+  size = 'md', 
+  className = '', 
+  ...rest 
+} = Astro.props;
+
+// Estilos base compartidos por todos los botones
+const baseStyles = "inline-flex items-center justify-center font-sans tracking-wide font-medium rounded-full transition-all duration-300 text-center cursor-pointer";
+
+// Diccionario de Variantes de Color (Estética Montessori)
+const variants = {
+  primary: "bg-emerald-700 hover:bg-emerald-800 text-white shadow-sm hover:shadow-md",
+  secondary: "bg-amber-700 hover:bg-amber-800 text-white shadow-sm hover:shadow-md",
+  outline: "border-2 border-slate-300 hover:border-slate-800 text-slate-700 hover:text-slate-900 bg-transparent"
+};
+
+// Diccionario de Tamaños
+const sizes = {
+  sm: "text-xs uppercase tracking-wider px-4 py-2",
+  md: "text-sm px-6 py-3",
+  lg: "text-base px-8 py-4 font-semibold"
+};
+
+const buttonClasses = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+---
+
+{
+  href ? (
+    <a href={href} class={buttonClasses} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button class={buttonClasses} {...rest}>
+      <slot />
+    </button>
+  )
+}

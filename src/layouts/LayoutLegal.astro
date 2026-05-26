@@ -1,0 +1,77 @@
+---
+import MainLayout from './MainLayout.astro';
+const { frontmatter } = Astro.props;
+---
+<MainLayout title={frontmatter.title} description={frontmatter.description}>
+    <div class="legal-wrapper-fix">
+      
+      <main class="legal-container-box">
+        <article class="prose-legal">
+          <slot /> 
+        </article>
+      </main>
+  
+    </div>
+</MainLayout>
+
+<style>
+    .legal-wrapper-fix {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      background-color: #f8fafc; 
+      padding: 4rem 2rem !important; }
+
+    .legal-container-box {
+      width: 100% !important;
+      max-width: 800px !important; 
+      margin: 0 auto !important; 
+      background-color: #ffffff !important; 
+      padding: 3.5rem !important; 
+      border-radius: 12px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+      box-sizing: border-box !important;
+    }
+  
+    @media (max-width: 640px) {
+      .legal-wrapper-fix {
+        padding: 1.5rem 1rem !important; 
+      }
+      .legal-container-box {
+        padding: 2rem 1.25rem !important; 
+      }
+    }
+  
+    .prose-legal :global(h1) {
+      font-size: 2rem;
+      color:  #43A047;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    
+    .prose-legal :global(h2) {
+      font-size: 1.25rem;
+      color: #43A047;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 1rem;
+    }
+  
+    .prose-legal :global(h3) {
+      font-size: 1.15rem;
+      color: #2563eb;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .prose-legal :global(p) {
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      color: #334155;
+      text-align: justify;
+    }
+  </style>

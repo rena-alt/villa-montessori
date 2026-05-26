@@ -1,0 +1,305 @@
+---
+// src/components/sections/MontessoriMethod.astro
+---
+
+<section id="filosofia" class="method-section overflow-hidden">
+  <div class="container mx-auto px-4">
+    
+    <div class="method-grid">
+      
+      <div class="method-intro reveal-fade">
+        <span class="method-badge">Nuestra Filosofía</span>
+        <h2>Ayúdame a hacerlo por mí mismo</h2>
+        
+        <blockquote class="method-quote">
+          <p>"La primera tarea de la educación es agitar la vida, pero dejarla libre para que se desarrolle".</p>
+          <cite class="quote-author">— Dra. María Montessori</cite>
+        </blockquote>
+        
+        <p class="method-lead">
+          Nuestra metodología no busca saturar la mente del niño con datos memorizados. En la etapa de los <strong>3 a los 6 años</strong>, guiamos el potencial natural de tu hijo para que construya su propia inteligencia, seguridad y carácter a través de la exploración activa.
+        </p>
+      </div>
+
+      <div class="method-fundamentals reveal-stagger">
+        
+        <div class="fundamental-card">
+          <div class="fundamental-numeric">
+            <span class="num">01</span>
+            <span class="dot"></span>
+          </div>
+          <div class="fundamental-content">
+            <h3>La Mente Absorbente</h3>
+            <p>Durante esta primera infancia, la mente del niño posee una capacidad única e infinita para absorber conocimientos de su entorno de manera natural y sin esfuerzo consciente, sentando las bases de su personalidad.</p>
+          </div>
+        </div>
+
+        <div class="fundamental-card">
+          <div class="fundamental-numeric">
+            <span class="num">02</span>
+            <span class="dot"></span>
+          </div>
+          <div class="fundamental-content">
+            <h3>Periodos Sensibles</h3>
+            <p>Identificamos y aprovechamos las ventanas temporales del desarrollo donde tu hijo muestra una fascinación y facilidad extraordinaria para aprender habilidades específicas: el lenguaje, el orden, el movimiento y el refinamiento sensorial.</p>
+          </div>
+        </div>
+
+        <div class="fundamental-card">
+          <div class="fundamental-numeric">
+            <span class="num">03</span>
+            <span class="dot"></span>
+          </div>
+          <div class="fundamental-content">
+            <h3>Libertad con Límites</h3>
+            <p>Dentro del ambiente, el niño es libre de elegir el material con el que desea trabajar y el tiempo que le dedicará. Esta libertad guiada genera una disciplina interna genuina, alta concentración y un profundo respeto por el trabajo de los demás.</p>
+          </div>
+        </div>
+
+        <div class="fundamental-card">
+          <div class="fundamental-numeric">
+            <span class="num">04</span>
+            <span class="dot"></span>
+          </div>
+          <div class="fundamental-content">
+            <h3>Educación Cósmica Inicial</h3>
+            <p>Introducimos al niño a la interconexión de la naturaleza y la sociedad. Al cuidar de sí mismos, de sus plantas y de su comunidad escolar, desarrollan una conciencia ecológica y empática desde la raíz.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.12
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.reveal-fade, .reveal-stagger').forEach(el => observer.observe(el));
+    });
+  })();
+</script>
+
+<style>
+    .method-section {
+      padding: 2em 0;
+      background-color: #faf9f6; 
+      border-bottom: 1px solid rgba(13, 71, 49, 0.04);
+
+    }
+  
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+  
+    @media (min-width: 1024px) {
+      .method-grid {
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--space-20);
+      }
+    }
+  
+    .method-intro {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+  
+    @media (min-width: 1024px) {
+      .method-intro {
+        grid-column: span 5;
+        position: sticky;
+        top: 6rem; 
+      }
+    }
+  
+    .method-badge {
+      font-family: var(--font-headers);
+      font-size: var(--font-size-xs);
+      font-weight: var(--weight-bold);
+      color: var(--color-brand-green);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+  
+    .method-intro h2 {
+      color: var(--color-slate-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+  
+    .method-quote {
+      font-style: italic;
+      font-size: var(--font-size-base);
+      color: var(--color-brand-green-hover);
+      line-height: 1.6;
+      border-left: 3px solid var(--color-brand-orange, #f19b5c);
+      padding-left: var(--space-4);
+      margin: var(--space-4) 0;
+    }
+  
+    .quote-author {
+      display: block;
+      font-style: normal;
+      font-weight: var(--weight-bold);
+      font-size: var(--font-size-xs);
+      color: var(--color-slate-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: var(--space-2);
+    }
+  
+    .method-lead {
+      font-size: var(--font-size-sm);
+      color: var(--color-slate-dark);
+      opacity: 0.85;
+      line-height: 1.7;
+      margin: 0;
+    }
+  
+    .method-fundamentals {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+  
+    @media (min-width: 1024px) {
+      .method-fundamentals {
+        grid-column: span 7;
+      }
+    }
+  
+    .fundamental-card {
+      background-color: var(--color-white);
+      padding: var(--space-6) var(--space-8);
+      border-radius: var(--radius-xl, 24px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(13, 71, 49, 0.03);
+      
+      display: flex;
+      gap: var(--space-5);
+      align-items: flex-start;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                  box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                  border-color 0.5s ease;
+    }
+  
+    .fundamental-numeric {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      padding-top: 2px;
+    }
+
+    .fundamental-numeric .num {
+      font-family: var(--font-headers);
+      font-size: var(--font-size-md);
+      font-weight: var(--weight-bold);
+      color: var(--color-brand-green);
+      opacity: 0.3;
+      line-height: 1;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .fundamental-numeric .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--color-brand-orange);
+      margin-top: 6px;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+  
+    .fundamental-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+  
+    .fundamental-content h3 {
+      font-size: var(--font-size-md);
+      color: var(--color-slate-dark);
+      margin: 0 0 2px 0 !important;
+      transition: color 0.4s ease;
+    }
+  
+    .fundamental-content p {
+      color: var(--color-slate-dark);
+      opacity: 0.8;
+      font-size: var(--font-size-sm);
+      line-height: 1.65;
+      margin: 0 !important;
+    }
+
+    @media (hover: hover) {
+      .fundamental-card:hover {
+        transform: translateX(6px); 
+        box-shadow: 0 10px 25px rgba(13, 71, 49, 0.04);
+        border-color: rgba(13, 71, 49, 0.1);
+      }
+  
+      .fundamental-card:hover .num {
+        opacity: 0.9;
+        transform: scale(1.05);
+        color: var(--color-brand-green-hover);
+      }
+
+      .fundamental-card:hover .dot {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  
+    .reveal-fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+  
+    .reveal-stagger .fundamental-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                  transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+  
+    .reveal-fade.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    .reveal-stagger.is-visible .fundamental-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    .reveal-stagger.is-visible .fundamental-card:nth-child(1) { transition-delay: 0.1s; }
+    .reveal-stagger.is-visible .fundamental-card:nth-child(2) { transition-delay: 0.25s; }
+    .reveal-stagger.is-visible .fundamental-card:nth-child(3) { transition-delay: 0.4s; }
+    .reveal-stagger.is-visible .fundamental-card:nth-child(4) { transition-delay: 0.55s; }
+</style>

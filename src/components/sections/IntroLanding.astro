@@ -1,0 +1,343 @@
+---
+// src/components/sections/IntroLanding.astro
+
+import { Image } from 'astro:assets';
+import preescolarImg from '../../assets/images/material-matematicas.jpg';
+import vidaPracticaImg from '../../assets/images/vida-practica-jarras.jpg';
+import sensorialImg from '../../assets/images/sensorial.jpg';
+import lenguajeImg from '../../assets/images/lenguaje.jpg';
+import cuidadoAmbienteImg from '../../assets/images/cuidado-flores.jpg';
+import cuidadoPersonaImg from '../../assets/images/cuidado-personal.jpg';
+import areasCulturalesImg from '../../assets/images/cultural.jpg';
+import educacionPazImg from '../../assets/images/educacion-paz.jpg';
+import matematicasImg from '../../assets/images/matematicas.jpg';
+
+const generateSlug = (text: string) => {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, '-');
+};
+
+const areas = [
+  { img: vidaPracticaImg, name: "Vida Práctica" },
+  { img: sensorialImg, name: "Sensorial" },
+  { img: lenguajeImg, name: "Lenguaje" },
+  { img: matematicasImg, name: "Matemáticas" },
+  { img: cuidadoPersonaImg, name: "Cuidado de la persona" },
+  { img: cuidadoAmbienteImg, name: "Cuidado del ambiente" },
+  { img: areasCulturalesImg, name: "Areás Culturales" },
+  { img: educacionPazImg, name: "Educación para la Paz" }
+];
+---
+
+<section class="intro-landing-section">
+  <div class="container-custom">
+    <div class="main-editorial-grid">
+      
+      <div class="editorial-main-block reveal-on-scroll">
+        <div class="image-zoom-wrapper">
+          <Image 
+            src={preescolarImg}
+            alt="Ambiente Casa de los Niños preparado" 
+            class="main-landing-image"
+          />
+        </div>
+        <div class="block-content">
+          <span class="section-badge">Preescolar</span>
+          <h3>Casa de los Niños</h3>
+          <p class="age-tag">Etapa de desarrollo: 3 a 6 Años</p>
+          <p class="main-description">
+            Un espacio cálido y científicamente diseñado donde el niño explora, aprende y crece a su propio ritmo. 
+            Los ambientes preparados estimulan la curiosidad natural y sientan las bases del amor por el aprendizaje auto-dirigido.
+          </p>
+        </div>
+      </div>
+  
+      <div class="editorial-side-block reveal-on-scroll delay-200">
+        
+        <div class="philosophy-wrapper">
+          <ul class="montessori-bullet-list">
+            <li>
+              <span class="bullet-dot"></span>
+              <p><strong>Aprendizaje sensorial y concreto:</strong> Experiencias tangibles donde los niños tocan, sienten y exploran con sus sentidos para comprender conceptos desde lo más sencillo a lo más complejo.</p>
+            </li>
+            <li>
+              <span class="bullet-dot"></span>
+              <p><strong>Autonomía y confianza:</strong> Mobiliario a escala que le permite al niño ser dueño de sus propias elecciones.</p>
+            </li>
+            <li>
+              <span class="bullet-dot"></span>
+              <p><strong>Una formación completa para crecer felices y activos</strong> Además de potenciar su autonomía, nuestros alumnos exploran el mundo a traves de actividades culturales, artisticas y deportivas.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="areas-subgrid-wrapper">
+            <h4>Áreas de exploración en el ambiente:</h4>
+            <div class="areas-grid">
+              {areas.map((area) => (
+                <a href={`/rutina-diaria#${generateSlug(area.name)}`} class="area-mini-card group">
+                  <div class="mini-img-wrapper">
+                    <Image src={area.img} alt={`Área de ${area.name}`} class="mini-image" />
+                    <div class="mini-overlay"></div>
+                  </div>
+                  <span>{area.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+  
+        <div class="action-footer">
+          <a href= "https://wa.me/525591618247?text=Hola,%20me%20gustaría%20recibir%20informes%20sobre%20las%20inscripciones%20y%20agendar%20una%20visita%20guiada%20en%20Villa%20Montessori." class="btn-editorial-outline">
+            Solicita Informes
+          </a>
+        </div>
+        
+      </div>
+  
+    </div>
+  </div>
+</section>
+  
+<style>
+  .intro-landing-section {
+    padding: 5em 0;
+    background-color: #ffffff;
+    color: var(--color-slate-dark, #1e293b);
+  }
+
+  .container-custom {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .main-editorial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 868px) {
+    .main-editorial-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
+    }
+  }
+
+  .image-zoom-wrapper {
+    overflow: hidden;
+    border-radius: var(--radius-xl, 24px);
+    box-shadow: 0 8px 30px rgba(13, 71, 49, 0.02);
+    margin-bottom: 2rem;
+  }
+
+  .main-landing-image {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .editorial-main-block:hover .main-landing-image {
+    transform: scale(1.03);
+  }
+
+  .section-badge {
+    font-family: var(--font-headers), sans-serif;
+    font-size: var(--font-size-xs, 18px);
+    font-weight: 700;
+    color: var(--color-brand-green, #0d4731);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .block-content h3 {
+    font-family: var(--font-headers), serif;
+    font-size: 2.25rem;
+    color: var(--color-brand-green, #0d4731);
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .age-tag {
+    font-family: var(--font-headers), sans-serif;
+    color: #e08b53;
+    font-weight: 600;
+    font-size: var(--font-size-sm, 14px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 1.2rem 0;
+  }
+
+  .main-description {
+    font-size: var(--font-size-sm, 15px);
+    line-height: 1.7;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .editorial-side-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .montessori-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3rem 0;
+  }
+
+  .montessori-bullet-list li {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .bullet-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #f19b5c;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .montessori-bullet-list p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+
+  .areas-subgrid-wrapper h4 {
+    font-family: var(--font-headers), sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-slate-dark);
+    opacity: 0.5;
+    margin: 0 0 1rem 0;
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .area-mini-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--color-bg-cream, #fdfbf7);
+    padding: 8px 12px;
+    border-radius: var(--radius-lg, 16px);
+    border: 1px solid rgba(13, 71, 49, 0.04);
+    transition: all 0.3s ease;
+  }
+
+  .area-mini-card:hover {
+    border-color: rgba(13, 71, 49, 0.15);
+    background-color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .mini-img-wrapper {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .mini-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .area-mini-card span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-slate-dark);
+  }
+
+  .btn-editorial-outline {
+    display: inline-block;
+    border: 2px solid var(--color-brand-green, #0d4731);
+    color: var(--color-brand-green, #0d4731);
+    font-family: var(--font-headers), sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .btn-editorial-outline:hover {
+    background-color: var(--color-brand-green, #0d4731);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(13, 71, 49, 0.15);
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (min-width: 868px) {
+    .delay-200 {
+      transition-delay: 0.15s;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px -5% -10% 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const initObserver = () => {
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initObserver);
+    } else {
+      initObserver();
+    }
+    document.addEventListener('astro:page-load', initObserver);
+  })();
+</script>

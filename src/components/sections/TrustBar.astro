@@ -1,0 +1,170 @@
+---
+interface Props {
+  badgeText?: string;
+  mainText?: string;
+  linkText?: string;
+  href?: string;
+  isWhatsApp?: boolean; 
+}
+
+const {
+  badgeText = "Inscripciones Abiertas",
+  mainText = "Dale la libertad de descubrir el mundo a su propio ritmo",
+  linkText = "Iniciar proceso de admisión", 
+  href = "https://wa.me/525591618247?text=Hola,%20me%20gustaría%20recibir%20informes%20sobre%20las%20inscripciones%20y%20agendar%20una%20visita%20guiada%20en%20Villa%20Montessori.",
+  isWhatsApp = true
+} = Astro.props;
+---
+
+<div class="trust-bar-container">
+  <div class="trust-bar-content">
+    
+    <div class="trust-info-block">
+      <span class="trust-badge">
+        <span class="pulse-dot"></span>
+        {badgeText}
+      </span>
+      <p class="trust-text">
+        {mainText}
+      </p>
+    </div>
+
+    <a 
+      href={href} 
+      class="trust-link-button"
+      target={isWhatsApp ? "_blank" : "_self"}
+      rel={isWhatsApp ? "noopener noreferrer" : undefined}
+    >
+      {linkText}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="arrow-icon">
+        <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 11-1.04-1.08l4.158-3.92H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+      </svg>
+    </a>
+
+  </div>
+</div>
+
+<style>
+  .trust-bar-container {
+    width: 100%;
+    background: linear-gradient(135deg, #fffbeb 0%, #ffedd5 50%, #fef3c7 100%); 
+    border-bottom: 2px solid #fed7aa;
+    padding: 16px 24px; 
+    box-shadow: 0 4px 20px rgba(251, 146, 60, 0.08);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 50;
+  }
+
+  .trust-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .trust-info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  @media (min-width: 960px) {
+    .trust-bar-content {
+      flex-direction: row;
+      text-align: left;
+      gap: 32px;
+    }
+    .trust-info-block {
+      flex-direction: row;
+      gap: 18px;
+    }
+  }
+
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    background-color: #ea580c; 
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    font-family: system-ui, -apple-system, sans-serif;
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.2);
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    animation: pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.4; }
+  }
+
+  .trust-text {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #451a03; /* amber-950 */
+    font-family: var(--font-headers), Georgia, serif; 
+    line-height: 1.4;
+  }
+  
+  @media (min-width: 768px) {
+    .trust-text {
+      font-size: 17px;
+    }
+  }
+
+  .trust-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2410c; /* orange-700 */
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(194, 65, 12, 0.08);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: system-ui, -apple-system, sans-serif;
+    white-space: nowrap;
+    border: 1px solid rgba(254, 215, 170, 0.5);
+  }
+
+  .trust-link-button:hover {
+    color: #ffffff;
+    background-color: var(--color-brand-green, #0d4731); 
+    box-shadow: 0 6px 16px rgba(13, 71, 49, 0.2);
+    transform: translateY(-2px);
+    border-color: transparent;
+  }
+
+  .arrow-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+  }
+
+  .trust-link-button:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+</style>

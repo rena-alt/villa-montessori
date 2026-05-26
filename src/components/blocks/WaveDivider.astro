@@ -1,0 +1,45 @@
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+    function initWaveAnimations() {
+      gsap.registerPlugin(ScrollTrigger);
+  
+      const svgs = document.querySelectorAll('[id^="wave-"]');
+  
+      svgs.forEach((svg) => {
+        const path = svg.querySelector('.wave-path');
+        const orientation = svg.getAttribute('data-orientation');
+  
+        if (path) {
+          ScrollTrigger.getAll().forEach(t => {
+            if (t.trigger === svg) t.kill();
+          });
+  
+          // CORRECCIÓN ATÓMICA DE GSAP:
+          // En lugar de mover el eje Y desde 0 (que deja aire abajo), 
+          // usamos un scaleY sutil combinado con un punto de origen en la base (bottom).
+          // Así la onda se moverá de forma orgánica con el scroll pero jamás se despegará del piso.
+          gsap.fromTo(path,
+            { 
+              scaleY: 1, 
+              transformOrigin: "bottom center" 
+            },
+            {
+              scaleY: 1.25, // Se estira un poco hacia arriba al hacer scroll
+              ease: 'none',
+              scrollTrigger: {
+                trigger: svg,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1,
+              },
+            }
+          );
+        }
+      });
+    }
+  
+    initWaveAnimations();
+    document.addEventListener('astro:page-load', initWaveAnimations);
+  </script>

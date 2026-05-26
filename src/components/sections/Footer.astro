@@ -1,0 +1,219 @@
+---
+// src/components/sections/Footer.astro
+const currentYear = new Date().getFullYear();
+import { Image } from 'astro:assets';
+import logoImg from '../../assets/logo.png'; 
+
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    
+    <div class="footer-brand">
+      <div class="logo-wrapper">
+        <Image 
+        src={logoImg} 
+        alt="Logotipo Oficial de Centro de Educación Villa Montessori" 
+        width={90}
+        height={90}
+        loading="eager"
+        class="nav-logo"
+      />      </div>
+      <h3>Villa Montessori</h3>
+      <p class="brand-tagline">
+        Ambientes preparados científicamente para el desarrollo integral, autónomo y libre de tus hijos.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Explorar</h4>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="/contacto">Casa de los niños</a></li>
+        <li><a href="/rutina-diaria">Oferta Educativa</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>Comunidad</h4>
+      <ul>
+        <li><a href="/galeria">Galería de Ambientes</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Ubicación</h4>
+      <div class="contact-info">
+        <p><strong>Casa de los Niños (Preescolar):</strong><br />
+          Unión #272, Col. Tepeyac Insurgentes.<br />
+          <a href="tel:5530930931" class="phone-link">Tel: 55 3093 0931</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container bottom-flex">
+      <p>&copy; {currentYear} Centro de Educación Villa Montessori. Todos los derechos reservados.</p>
+      <div class="legal-links">
+        <a href="/aviso-de-privacidad">Aviso de Privacidad</a>
+        <span class="separator">|</span>
+        <a href="/avisos/incorporaciones">Incorporaciones SEP</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-white);
+    border-top: 1px solid rgba(156, 163, 175, 0.15);
+    padding-top: var(--space-12);
+    margin-top: auto; /* Asegura el empuje si se usa flex vertical */
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding-bottom: var(--space-12);
+  }
+
+  /* Consultas de medios para hacerlo responsivo (Tablet y Desktop) */
+  @media (min-width: 640px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      gap: var(--space-6);
+    }
+  }
+
+  /* Estilos de la Columna de Marca */
+  .footer-brand h3 {
+    color: var(--color-brand-green);
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-md);
+  }
+
+  .footer-logo {
+    height: auto;
+    max-width: 80px;
+    margin-bottom: var(--space-3);
+  }
+
+  .brand-tagline {
+    font-size: var(--font-size-sm);
+    color: var(--color-slate-dark);
+    opacity: 0.85;
+    max-width: 280px;
+  }
+
+  /* Estilos de Enlaces del Footer */
+  .site-footer h4 {
+    color: var(--color-slate-dark);
+    font-size: var(--font-size-base);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-4);
+    position: relative;
+  }
+
+  .site-footer h4::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-brand-orange);
+    margin-top: var(--space-1);
+    border-radius: var(--radius-full);
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-links a {
+    color: var(--color-slate-dark);
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast), padding-left var(--transition-fast);
+    display: inline-block;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-brand-green);
+    padding-left: var(--space-1);
+  }
+
+  /* Columna de Contacto */
+  .footer-contact p {
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
+  }
+
+  .phone-link {
+    color: var(--color-brand-orange);
+    font-weight: var(--weight-semibold);
+    display: inline-block;
+    margin-top: var(--space-1);
+  }
+
+  .phone-link:hover {
+    color: var(--color-brand-orange-hover);
+  }
+
+  /* Barra de Registro / Copyright */
+  .footer-bottom {
+    background-color: var(--color-bg-cream);
+    border-top: 1px solid rgba(156, 163, 175, 0.1);
+    padding: var(--space-4) 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-slate-dark);
+    opacity: 0.9;
+  }
+
+  .bottom-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .bottom-flex {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  .bottom-flex p {
+    margin: 0;
+  }
+
+  .legal-links a {
+    color: var(--color-slate-dark);
+  }
+
+  .legal-links a:hover {
+    color: var(--color-brand-green);
+  }
+
+  .separator {
+    margin: 0 var(--space-1);
+    color: var(--color-slate-light);
+  }
+</style>

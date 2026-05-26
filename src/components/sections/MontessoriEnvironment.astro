@@ -1,0 +1,322 @@
+---
+// src/components/sections/MontessoriEnvironment.astro
+import { Image } from 'astro:assets';
+
+import mobiliarioImg from '../../assets/images/trabajo-ambiente.png';
+import materialesImg from '../../assets/images/geometria.jpg';
+import ordenImg from '../../assets/images/cuidado-flores.jpg';
+import comunidadImg from '../../assets/images/cuidado-ambiente-huerto.jpg';
+
+const pillars = [
+  {
+    title: "Mobiliario a su Medida",
+    description: "Mesas, sillas, repisas e incluso los picaportes están adaptados físicamente al tamaño de los niños. Al no depender de la fuerza o altura de un adulto, la independencia florece de forma natural.",
+    imagePath: mobiliarioImg,
+    imageAlt: "Estantes bajos de madera con materiales Montessori al alcance de los niños"
+  },
+  {
+    title: "Materiales con Control de Error",
+    description: "Los materiales científicos tienen el propósito de auto-corrección integrado. Si un niño comete un error, el propio objeto se lo muestra físicamente, eliminando la necesidad de una calificación externa o castigo.",
+    imagePath: materialesImg,
+    imageAlt: "Manos de un niño encajando cilindros de madera en bloques Montessori"
+  },
+  {
+    title: "Estética, Calma y Fragilidad",
+    description: "Espacios inundados de luz natural, plantas reales que ellos cuidan y objetos de vidrio o porcelana. Aprender a manipular objetos frágiles educa el control motriz y el sentido de la responsabilidad.",
+    imagePath: ordenImg,
+    imageAlt: "Planta pequeña y jarra de vidrio sobre una mesa de madera iluminada"
+  },
+  {
+    title: "Comunidad de Edades Mixtas",
+    description: "En el ambiente conviven niños de diferentes edades. Los más pequeños aprenden por imitación observando a sus compañeros mayores, mientras que los grandes reafirman sus conocimientos y empatía guiando a los chicos.",
+    imagePath: comunidadImg,
+    imageAlt: "Niño mayor ayudando sutilmente a una niña pequeña con un material en el suelo"
+  }
+];
+---
+
+<section id="ambiente" class="environment-section overflow-hidden">
+  <div class="container mx-auto px-4">
+    
+    <div class="environment-header reveal-item">
+      <span class="environment-badge">El Aula como Tercer Maestro</span>
+      <h2>Un laboratorio de vida diseñado científicamente</h2>
+      <p class="environment-lead">
+        Nuestros aulas de <strong>Casa de los Niños</strong> no son aulas tradicionales con filas de pupitres y pizarrones. Son <strong>ambientes preparados</strong> minuciosamente donde cada objeto tiene una razón de ser, un propósito de desarrollo y un lugar exacto.
+      </p>
+    </div>
+
+    <div class="environment-pillars-list">
+      {pillars.map((pillar, index) => (
+        <div class="pillar-row reveal-row">
+          
+          <div class="pillar-image-wrapper">
+            <div class="image-frame">
+              <Image 
+                src={pillar.imagePath}
+                alt={pillar.imageAlt}
+                width={700}
+                height={500}
+                class="pillar-image"
+              />
+              <div class="image-overlay"></div>
+            </div>
+          </div>
+
+          <div class="pillar-text-wrapper">
+            <div class="number-badge-wrapper">
+              <span class="pillar-number">0{index + 1}</span>
+              <span class="animated-line"></span>
+            </div>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.description}</p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px -10% -10% 0px', 
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal-item, .reveal-row').forEach(el => observer.observe(el));
+  });
+</script>
+
+<style>
+   .environment-section {
+    padding: 1em 0; 
+    background-color: var(--color-white);
+  }
+
+  @media (min-width: 768px) {
+    .environment-section {
+      padding: 2em 0; 
+    }
+  }
+  
+    .environment-header {
+    max-width: 760px;
+    margin: 3em auto; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  
+    .environment-badge {
+      font-family: var(--font-headers);
+      font-size: var(--font-size-xs);
+      font-weight: var(--weight-bold);
+      color: var(--color-brand-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+  
+    .environment-header h2 {
+      color: var(--color-slate-dark);
+    }
+  
+    .environment-lead {
+      font-size: var(--font-size-base);
+      color: var(--color-slate-dark);
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+  
+    .environment-pillars-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16);
+    }
+  
+    @media (min-width: 1024px) {
+      .environment-pillars-list {
+        gap: var(--space-28); /* Espaciado más holgado entre filas en pantallas grandes */
+      }
+    }
+  
+    /* --- La Fila Estructural --- */
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+  
+    @media (min-width: 1024px) {
+      .pillar-row {
+        /* Cambiamos a una asimetría elegante: 1.1 partes imagen, 0.9 partes texto */
+        grid-template-columns: 1.1fr 0.9fr; 
+        gap: var(--space-20);
+      }
+  
+      .pillar-row:nth-child(even) .pillar-image-wrapper {
+        order: 2;
+      }
+      
+      .pillar-row:nth-child(even) .pillar-text-wrapper {
+        order: 1;
+        padding-left: 0;
+        padding-right: var(--space-12);
+      }
+    }
+  
+    .pillar-image-wrapper {
+      width: 100%;
+      position: relative;
+    }
+  
+    .image-frame {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background-color: var(--color-bg-cream);
+      box-shadow: var(--shadow-md);
+      /* Preparar para micro-interacción de profundidad */
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                  box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+  
+    .pillar-image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      /* Transición refinada para la escala interna */
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(13, 71, 49, 0.05));
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+  
+    /* --- MICRO-INTERACCIONES EN HOVER --- */
+    /* Cuando el usuario interactúa con la fila completa */
+    @media (hover: hover) {
+      .pillar-row:hover .image-frame {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .pillar-row:hover .pillar-image {
+        transform: scale(1.05); /* Efecto zoom refinado */
+      }
+
+      .pillar-row:hover .animated-line {
+        width: 60px; /* La línea crece orgánicamente */
+        background-color: var(--color-brand-orange);
+      }
+
+      .pillar-row:hover .pillar-number {
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
+    }
+  
+    /* --- Contenedor de Texto --- */
+    .pillar-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3); 
+      padding: 0 var(--space-2);
+    }
+  
+    @media (min-width: 1024px) {
+      .pillar-text-wrapper {
+        padding: 0 0 0 var(--space-4); 
+      }
+    }
+
+    /* Estructura del indicador numérico animado */
+    .number-badge-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-1);
+    }
+  
+    .pillar-number {
+      font-family: var(--font-headers);
+      font-size: var(--font-size-md);
+      font-weight: var(--weight-bold);
+      color: var(--color-brand-green, var(--color-brand-green-hover));
+      opacity: 0.4;
+      display: inline-block;
+      line-height: 1;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .animated-line {
+      width: 30px;
+      height: 2px;
+      background-color: var(--color-brand-green-hover);
+      opacity: 0.3;
+      display: inline-block;
+      transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                  background-color 0.5s ease, 
+                  opacity 0.5s ease;
+    }
+
+    .pillar-row:hover .animated-line {
+      opacity: 1;
+    }
+  
+    .pillar-text-wrapper h3 {
+      color: var(--color-slate-dark);
+      margin: 0 !important; 
+      line-height: 1.25;
+      font-size: calc(var(--font-size-lg) * 1.1);
+    }
+  
+    .pillar-text-wrapper p {
+      color: var(--color-slate-dark);
+      opacity: 0.85;
+      font-size: var(--font-size-sm);
+      line-height: 1.65;
+      margin: 0 !important;
+    }
+
+    /* --- SISTEMA DE ANIMACIÓN AL HACER SCROLL (CSS) --- */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal-row {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                  transform 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+
+    /* Estado activo inyectado por JS */
+    .reveal-item.is-visible,
+    .reveal-row.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+</style>

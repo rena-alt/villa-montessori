@@ -1,0 +1,128 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/ambiente-preparado.png';
+---
+
+<section id="hero-preparado" class="relative w-full overflow-hidden bg-[#fdfaf5]" style="height: 600px; position: relative;">
+  
+  <div class="absolute inset-0 pointer-events-none" style="position: absolute; inset: 0; z-index: 1;">
+    <Image 
+      src={heroImage} 
+      alt="Ambiente preparado Montessori" 
+      class="object-cover object-center block"
+      widths={[320, 640, 1024, 1280]}
+      sizes="(max-width: 768px) 100vw, 1280px"
+      loading="eager"
+      style="position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; object-fit: cover;"
+    />
+  </div>
+
+  <div 
+    class="absolute inset-0 pointer-events-none"
+    style="position: absolute; inset: 0; z-index: 2; background: rgba(0, 0, 0, 0.65); background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.45) 100%);"
+  ></div>
+
+  <div 
+    class="mx-auto px-6 text-center text-white flex flex-col items-center justify-center space-y-6 sm:space-y-8"
+    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; width: 100%; max-width: 1200px; text-align: center;"
+  >
+    <h2 class="hero-title anim-fade-up font-bold leading-tight tracking-wide text-white w-full shadow-text"
+      style="text-align: center; width: 100%;">
+      <span class="villa">Villa</span>
+      <span class="montessori">Montessori</span>
+    </h2>
+    
+    <h1 
+      class="anim-fade-up font-bold leading-tight tracking-wide text-white w-full shadow-text"
+      style="text-align: center; width: 100%; color: #ffffff !important;"
+    >
+      El lugar donde su curiosidad natural <br class="hidden md:block" /> se vuelve aprendizaje.
+    </h1>
+    
+    <p 
+      class="anim-fade-up anim-delay-1 max-w-4xl font-medium leading-relaxed w-full mx-auto shadow-text-light"
+      style="text-align: center; margin-left: auto; margin-right: auto; color: #f5f5f4 !important;"
+    >
+      Te invitamos a caminar por nuestras aulas y ver cómo un ambiente preparado transforma el juego en descubrimiento. Ven a conocernos y encuentra la comunidad que buscas para tu hijo.
+    </p>
+    
+    <div 
+      class="anim-fade-up anim-delay-2 pt-6 w-full flex items-center justify-center" 
+      style="display: flex; justify-content: center; width: 100%;"
+    >
+      <a 
+        href="#admisiones" 
+        class="hero-btn-visita btn btn-primary btn-round inline-block rounded-full bg-[#ff5122] px-8 py-3 font-semibold text-white tracking-wide transition-all duration-300 hover:bg-[#e6441a] hover:-translate-y-0.5"
+        style="color: #ffffff !important; background-color: #ff5122 !important;"
+      >
+        Agendar Visita
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style is:global>
+  #hero-preparado img {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    max-height: none !important;
+  }
+
+  .shadow-text {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6);
+  }
+
+  .shadow-text-light {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+  }
+
+  /* Tamaños para Mobile (por defecto) */
+  .hero-title {
+    font-size: 3rem; /* text-5xl equivalent */
+  }
+
+  h1 {
+    font-size: 2.25rem; /* text-4xl equivalent */
+  }
+
+  p {
+    font-size: 1rem; /* text-base equivalent */
+  }
+
+ 
+
+  .anim-fade-up {
+    opacity: 0;
+    transform: translateY(20px); 
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+  }
+
+  .anim-delay-1 {
+    animation-delay: 0.2s;
+  }
+  
+  .anim-delay-2 {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+  }
+
+  .hero-title .villa {
+    color: #4CAF50;
+  }
+
+  .hero-title .montessori {
+    color: #ff7322;
+  }
+</style>
