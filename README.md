@@ -1,4 +1,4 @@
-# 🏛️ Official Website - Casa de los Niños (Montessori)
+# 🏛️ Official Website - Casa de los Niños (Villa Montessori)
 
 This repository contains the complete institutional website for the "Casa de los Niños" Montessori school. The project was designed with a **premium editorial approach**, prioritizing visual warmth, a clear presentation of the Montessori philosophy, and flawless technical performance.
 
