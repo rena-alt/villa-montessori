@@ -45,7 +45,31 @@ import ContactForm from './ContactForm';
       </div>
 
       <div class="admissions-form-wrapper reveal-stagger my-4 lg:my-0">
+        
         <ContactForm client:visible />
+
+        <form 
+          name="admisiones-montessori" 
+          data-netlify="true" 
+          netlify-honeypot="bot-field" 
+          hidden 
+          class="hidden"
+          style="display: none;"
+        >
+          <input type="hidden" name="form-name" value="admisiones-montessori" />
+          <input type="text" name="parentName" />
+          <input type="email" name="email" />
+          <input type="tel" name="phone" />
+          <select name="childAge">
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5"></option>
+          </select>
+          <textarea name="message"></textarea>
+          <input type="text" name="bot-field" />
+        </form>
+
       </div>
 
     </div>
