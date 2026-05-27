@@ -52,6 +52,15 @@ const areas = [
             Un espacio cálido y científicamente diseñado donde el niño explora, aprende y crece a su propio ritmo. 
             Los ambientes preparados estimulan la curiosidad natural y sientan las bases del amor por el aprendizaje auto-dirigido.
           </p>
+          <div class="sep-badge-container">
+            <span class="sep-badge">
+              <svg class="sep-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+              </svg>
+              Estamos incorporados a la SEP
+            </span>
+          </div>
         </div>
       </div>
   
@@ -309,6 +318,40 @@ const areas = [
     .delay-200 {
       transition-delay: 0.15s;
     }
+  }
+  .sep-badge-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 1rem;       
+    margin-bottom: 1.5rem;  
+  }
+
+  .sep-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #e6f4ea; 
+    color: #137333;            
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;       
+    border: 1px solid #ceead6; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+
+  .sep-badge:hover {
+    transform: translateY(-1px);
+  }
+
+  .sep-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
 </style>
 
