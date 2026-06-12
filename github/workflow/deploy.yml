@@ -1,0 +1,31 @@
+name: Deploy Astro on Plesk
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Donwload GitHub code
+      uses: actions/checkout@v4
+
+    - name: Configure Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install and compile Astro
+      run: |
+        npm install
+        npm run build
+
+    - name: upload files Plesk by FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.villamontessori.edu.mx
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/
+        server-dir: /httpdocs/
